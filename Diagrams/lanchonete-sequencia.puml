@@ -1,0 +1,18 @@
+@startuml Sistema de Lanchonete
+
+actor "Cliente" as Cl
+participant "Lanchonete" as Lc
+actor "Funcionário" as Fn
+
+Cl <- Lc: Exibe cardápio
+    activate Lc
+    Cl --> Lc: Faz um pedido
+    Cl <- Lc: Solicita pagamento
+    Cl --> Lc: Realiza pagamento
+    Cl <- Lc: Confirma o pedido
+    Lc -> Fn: Encaminha o pedido
+        activate Fn
+        Lc <-- Fn: Atualiza status do pedido
+        deactivate Fn
+    Cl <- Lc: Informa situação do pedido
+deactivate Lc

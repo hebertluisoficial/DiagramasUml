@@ -1,0 +1,29 @@
+@startuml Sistema da Lanchonete
+left to right direction
+
+actor Cliente
+actor Funcionário
+actor Gerente
+
+rectangle Lanchonete {
+
+
+    Cliente -- (Escolher entre os itens)
+    Cliente -- (Fazer um pedido)
+    Cliente -- (Realizar pagamento)
+
+    (Realizar pagamento) <.. (Débito) : <<extend>>
+    (Realizar pagamento) <.. (Crédito) : <<extend>>
+    (Realizar pagamento) <.. (Pix) : <<extend>>
+
+    Funcionário -- (Atualizar status do pedido)
+ 
+    note right of (Atualizar status do pedido)
+Quando finalizado, o
+cliente é notificado para
+retirada ou entrega.
+    end note
+
+    Gerente -- (Cadastrar novos itens ao cardápio)
+    Gerente -- (Acompanhar vendas)
+}

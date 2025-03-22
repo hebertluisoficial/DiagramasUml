@@ -1,0 +1,13 @@
+@startuml Sistema de Lanchonete
+
+start
+    :Cliente escolhe entre os itens;
+    :Cliente faz um pedido;
+    :Cliente realiza o pagamento;
+
+    if (Compra Aprovada?) then (SIM)
+        :Funcionário atuliza status do pedido;
+    else (NÃO)
+        :Mensagem de erro;
+    endif 
+stop

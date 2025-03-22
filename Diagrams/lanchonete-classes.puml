@@ -1,0 +1,38 @@
+@startuml Sistema de Lanchonete
+
+class Lanchonete {
+    - cardápio: String
+}
+
+class Cliente {
+    - nome: String
+    - endereço: String
+
+    + escolherItem()
+    + fazerPedido()
+    + realizarPagamento()
+}
+
+class Pedido {
+    - numPedido: int
+    - cliente: string
+    - listaItens: string
+}
+
+class Funcionário {
+    - nome: String
+    - login: string
+
+    + atualizarStatusPedido()
+}
+
+class Gerente {
+    + cadastrarItens()
+    + acompanharVendas()
+}
+
+Lanchonete "1" -- "*" Cliente
+Lanchonete "1 " *-- "*" Pedido
+Cliente "1" *-- "1 " Pedido
+Funcionário <|-- Gerente
+Lanchonete "1..*" ..> "*" Funcionário
